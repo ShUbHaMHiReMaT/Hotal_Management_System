@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-hotel"></i>
+                <h1>Elegant Hotel Management</h1>
+            </div>
+            <nav>
+                <ul class="tabs">
+                    <li data-tab="customer" class="active">Customer</li>
+                    <li data-tab="food">Food Menu</li>
+                    <li data-tab="chef">Chef</li>
+                    <li data-tab="waiter">Waiter</li>
+                    <li data-tab="manager">Manager</li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Customer Registration Form -->
+            <section id="customer" class="form-section active">
+                <div class="form-container">
+                    <h2><i class="fas fa-user"></i> Customer Registration</h2>
+                    <form action="/submit" method="POST" id="customerForm">
+                        <input type="hidden" name="form_name" value="customer_form">
+                        
+                        <div class="form-group">
+                            <label for="customerName">Name</label>
+                            <input type="text" id="customerName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerPhone">Phone</label>
+                            <input type="text" id="customerPhone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerAddress">Address</label>
+                            <textarea id="customerAddress" name="address" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="customerEmail">Email</label>
+                            <input type="email" id="customerEmail" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit">Register Customer</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Food Menu Form -->
+            <section id="food" class="form-section">
+                <div class="form-container">
+                    <h2><i class="fas fa-utensils"></i> Food Menu Entry</h2>
+                    <form action="/submit" method="POST" id="foodForm">
+                        <input type="hidden" name="form_name" value="food_form">
+                        
+                        <div class="form-group">
+                            <label for="foodName">Name</label>
+                            <input type="text" id="foodName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="foodCategory">Category</label>
+                            <input type="text" id="foodCategory" name="category" placeholder="e.g., Appetizer, Main Course, Dessert" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="foodType">Type</label>
+                            <div class="custom-select">
+                                <select id="foodType" name="type" required>
+                                    <option value="">Select Food Type</option>
+                                    <option value="Veg">Vegetarian</option>
+                                    <option value="Non-Veg">Non-Vegetarian</option>
+                                </select>
+                                <div class="select-indicator"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="foodPrice">Price ($)</label>
+                            <input type="number" id="foodPrice" name="price" min="0" step="0.01" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="foodDescription">Description</label>
+                            <textarea id="foodDescription" name="description" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit">Add to Menu</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="food-animation">
+                    <div class="floating-icon"><i class="fas fa-pizza-slice"></i></div>
+                    <div class="floating-icon"><i class="fas fa-hamburger"></i></div>
+                    <div class="floating-icon"><i class="fas fa-coffee"></i></div>
+                    <div class="floating-icon"><i class="fas fa-ice-cream"></i></div>
+                </div>
+            </section>
+
+            <!-- Chef Registration Form -->
+            <section id="chef" class="form-section">
+                <div class="form-container">
+                    <h2><i class="fas fa-hat-chef"></i> Chef Registration</h2>
+                    <form action="/submit" method="POST" id="chefForm">
+                        <input type="hidden" name="form_name" value="chef_form">
+                        
+                        <div class="form-group">
+                            <label for="chefName">Name</label>
+                            <input type="text" id="chefName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="chefSpeciality">Speciality</label>
+                            <input type="text" id="chefSpeciality" name="speciality" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="chefExperience">Experience (years)</label>
+                            <input type="number" id="chefExperience" name="experience" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="chefSalary">Salary ($)</label>
+                            <input type="number" id="chefSalary" name="salary" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="chefPhone">Phone</label>
+                            <input type="text" id="chefPhone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="chefAddress">Address</label>
+                            <textarea id="chefAddress" name="address" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit">Register Chef</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Waiter Registration Form -->
+            <section id="waiter" class="form-section">
+                <div class="form-container">
+                    <h2><i class="fas fa-concierge-bell"></i> Waiter Registration</h2>
+                    <form action="/submit" method="POST" id="waiterForm">
+                        <input type="hidden" name="form_name" value="waiter_form">
+                        
+                        <div class="form-group">
+                            <label for="waiterName">Name</label>
+                            <input type="text" id="waiterName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="waiterAge">Age</label>
+                            <input type="number" id="waiterAge" name="age" min="18" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="waiterExperience">Experience (years)</label>
+                            <input type="number" id="waiterExperience" name="experience" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="waiterSalary">Salary ($)</label>
+                            <input type="number" id="waiterSalary" name="salary" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="waiterPhone">Phone</label>
+                            <input type="text" id="waiterPhone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="waiterAddress">Address</label>
+                            <textarea id="waiterAddress" name="address" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit">Register Waiter</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Manager Registration Form -->
+            <section id="manager" class="form-section">
+                <div class="form-container">
+                    <h2><i class="fas fa-user-tie"></i> Manager Registration</h2>
+                    <form action="/submit" method="POST" id="managerForm">
+                        <input type="hidden" name="form_name" value="manager_form">
+                        
+                        <div class="form-group">
+                            <label for="managerName">Name</label>
+                            <input type="text" id="managerName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerPosition">Position</label>
+                            <input type="text" id="managerPosition" name="position" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerSalary">Salary ($)</label>
+                            <input type="number" id="managerSalary" name="salary" min="0" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerPhone">Phone</label>
+                            <input type="text" id="managerPhone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerEmail">Email</label>
+                            <input type="email" id="managerEmail" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="managerAddress">Address</label>
+                            <textarea id="managerAddress" name="address" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit">Register Manager</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Elegant Hotel Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Success Message Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <i class="fas fa-check-circle"></i>
+            <h3>Success!</h3>
+            <p id="successMessage">Form submitted successfully.</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
